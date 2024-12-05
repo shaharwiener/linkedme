@@ -1,0 +1,39 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb;NON_KEYWORDS=user
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+  security:
+    oauth2:
+      client:
+        registration:
+          linkedin:
+            client-id: "77j9eblkxjpe7n"
+            client-secret: "ER41djk0exPMGDP0"
+            scope: openid, profile, email
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+            client-name: LinkedIn
+            authorization-grant-type: authorization_code
+            provider: linkedin
+            client_authentication_method: client_secret_post
+        provider:
+          linkedin:
+            authorization-uri: https://www.linkedin.com/oauth/v2/authorization
+            token-uri: https://www.linkedin.com/oauth/v2/accessToken
+            user-info-uri: https://api.linkedin.com/v2/userinfo
+            jwk-set-uri: https://www.linkedin.com/oauth/openid/jwks
+logging:
+  level:
+    root: DEBUG                # Default logging level for the application
+    com.linkedme.security.config: DEBUG  # Set to DEBUG for your SecurityConfig class
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"  # Format for console logs
+  file:
+    name: logs\application.log     # Log file name
+  logback:
+    include-stacktrace: always # Include stack traces in the logs (if exceptions occur)

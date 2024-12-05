@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+    <h1>Welcome</h1>
+    <a href="/oauth2/authorization/linkedin">Login with LinkedIn</a>
+    <div th:if="${param.error}">
+        <p>Error: <span th:text="${param.error}"></span></p>
+    </div>
+</body>
+</html>

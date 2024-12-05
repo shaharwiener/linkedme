@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+    <h1>Friends</h1>
+    <ul>
+        <li th:each="friend : ${friends}">
+            Name: <span th:text="${friend.name}"></span>, Company: <span th:text="${friend.company}"></span>
+        </li>
+    </ul>
+    <p th:if="${error}" th:text="${error}"></p>
+</body>
+</html>
